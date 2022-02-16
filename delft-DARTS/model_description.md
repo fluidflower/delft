@@ -12,19 +12,19 @@ One mass balance per component water and CO2.
 #### Fluid-matrix interaction
 
 * **Capillary pressure:** Constant p_entry
-* **Relative permeability:** Power-law
+* **Relative permeability:** Power-law: k_rj = k_rjmax * ((s_j-s_jr)/(1-s_lr-s_gr))^n_j
 
 #### Phase composition: Applied equations of state
 
-* **CO2 in liquid phase:** Fugacity-activity model Ziabaksh-Kooi (2012) with PR-EoS - derived constant K-values
+* **CO2 in liquid phase:** constant K-values: y_CO2/x_CO2 = 1e3
 
-* **Water in gas phase:** Fugacity-activity model Ziabaksh-Kooi (2012) with PR-EoS - derived constant K-values
+* **Water in gas phase:** constant K-values: y_H2O/x_H2O = 1e-3
 
 #### Density
 
-* **Liquid phase:** Spivey (2004) + Garcia (2001)
+* **Liquid phase:** rho = (1002 + x_CO2 * 320) * (1 + 1e-6 * (p - 1)) [p in bar]
 
-* **Gas phase:** PR-EoS
+* **Gas phase:** rho = 2 * (1 + 1e-4 * (p - 1)) [p in bar]
 
 ### Spatial parameters
 
@@ -40,7 +40,7 @@ Fully coupled, fully implicit, cell-centered FV with TPFA.
 
 ### Linearization and Solvers
 
-Operator Based Linearization, Newton with Appleyard chop, Linear solver for CPU: GMRES, CPR preconditioner with AMG and ILU(0)
+Operator Based Linearization, Newton with Appleyard chop, Linear solver for CPU: GMRES, CPR preconditioner with AMG and ILU(0) -> sparse direct SUPER_LU
 
 ### Primary Variables
 
