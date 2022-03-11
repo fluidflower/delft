@@ -28,6 +28,18 @@ _E.g._ One mass balance per component water and CO2.
 
 * **Gas phase:** ...
 
+#### Solubility limit
+
+_Please provide the assumed solubility limit of CO2 in liquid phase at the tank bottom in kg/m<sup>3</sup>._
+
+### Temperature
+
+_Please provide the assumed temperature inside the computational domain in °C._
+
+### Domain volume
+
+_Please provide the assumed total volume of the computational domain in m<sup>3</sup>._
+
 ### Spatial parameters
 
 _Please provide the relevant facies parameters as a csv file._<br>
@@ -49,3 +61,15 @@ _E.g._ Newton with line search, AMG-preconditioned BiCGSTAB for the linear syste
 _E.g._ Dependent on local phase composition:
 * Both phases present:
   ![p_l, S_g](https://render.githubusercontent.com/render/math?math=%5Ctextstyle+p_l%2C+S_g%0A)...
+
+### Computational Grid
+
+_Please provide the number and shape of grid elements._
+
+### Performance
+
+| Indicator                            |  Average |      Min |      Max |
+|:-------------------------------------|---------:|---------:|---------:|
+| time step size [s]                   | 1.23e+56 | 1.23e+56 | 1.23e+56 |
+| # nonlinear iterations per time step |      123 |      123 |      123 |
+| # linear iterations per solve        |      123 |      123 |      123 |
