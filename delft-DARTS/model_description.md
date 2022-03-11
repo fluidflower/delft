@@ -26,6 +26,18 @@ One mass balance per component water and CO2.
 
 * **Gas phase:** rho = 2 * (1 + 1e-4 * (p - 1)) [p in bar]
 
+#### Solubility limit
+
+_Please provide the assumed solubility limit of CO2 in liquid phase at the tank bottom in kg/m<sup>3</sup>._
+
+### Temperature
+
+_Please provide the assumed temperature inside the computational domain in °C._
+
+### Domain volume
+
+_Please provide the assumed total volume of the computational domain in m<sup>3</sup>._
+
 ### Spatial parameters
 
 _Please provide the relevant facies parameters as a csv file._<br>
@@ -45,3 +57,15 @@ Operator Based Linearization, Newton with Appleyard chop, Linear solver for CPU:
 ### Primary Variables
 
 * p, z_0
+
+### Computational Grid
+
+_Please provide the number and shape of grid elements._
+
+### Performance
+
+| Indicator                            |  Average |      Min |      Max |
+|:-------------------------------------|---------:|---------:|---------:|
+| time step size [s]                   | 1.23e+56 | 1.23e+56 | 1.23e+56 |
+| # nonlinear iterations per time step |      123 |      123 |      123 |
+| # linear iterations per solve        |      123 |      123 |      123 |
