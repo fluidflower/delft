@@ -12,31 +12,33 @@ One mass balance per component water and CO2.
 #### Fluid-matrix interaction
 
 * **Capillary pressure:** Constant p_entry
-* **Relative permeability:** Power-law: k_rj = k_rjmax * ((s_j-s_jr)/(1-s_lr-s_gr))^n_j
+  
+* **Relative permeability:** ![k_{rj} = k_{rj}^e \cdot \big[\frac{s_j-s_{jc}}{1-s_{wc}-s_{gc}}\big]^{n_j}](https://render.githubusercontent.com/render/math?math=%5Ccolor%7Bblack%7D%5Cdisplaystyle+k_%7Brj%7D+%3D+k_%7Brj%7D%5Ee+%5Ccdot+%5Cbig%5B%5Cfrac%7Bs_j-s_%7Bjc%7D%7D%7B1-s_%7Bwc%7D-s_%7Bgc%7D%7D%5Cbig%5D%5E%7Bn_j%7D)
 
 #### Phase composition: Applied equations of state
 
-* **CO2 in liquid phase:** constant K-values: y_CO2/x_CO2 = 1e3
+* **CO2 in liquid phase:** Activity model Ziabaksh (2012)
 
-* **Water in gas phase:** constant K-values: y_H2O/x_H2O = 1e-3
+* **Water in gas phase:** PR EoS
 
 #### Density
 
-* **Liquid phase:** rho = (1002 + x_CO2 * 320) * (1 + 1e-6 * (p - 1)) [p in bar]
+* **Liquid phase:** Spivey (2004) + Garcia (2001)
 
-* **Gas phase:** rho = 2 * (1 + 1e-4 * (p - 1)) [p in bar]
+* **Gas phase:** PR EoS
 
 #### Solubility limit
 
-_Please provide the assumed solubility limit of CO2 in liquid phase at the tank bottom in kg/m<sup>3</sup>._
+~1.90 kg/m3
 
 ### Temperature
 
-_Please provide the assumed temperature inside the computational domain in °C._
+T_mean = 20, std 2.0
 
 ### Domain volume
 
-_Please provide the assumed total volume of the computational domain in m<sup>3</sup>._
+Total volume: 0.09198 m3
+Total pore volume: 0.04060 m3
 
 ### Spatial parameters
 
@@ -52,20 +54,20 @@ Fully coupled, fully implicit, cell-centered FV with TPFA.
 
 ### Linearization and Solvers
 
-Operator Based Linearization, Newton with Appleyard chop, Linear solver for CPU: GMRES, CPR preconditioner with AMG and ILU(0) -> sparse direct SUPER_LU
+Operator Based Linearization, Newton with Appleyard chop, Linear solver for CPU: sparse direct SUPER_LU
 
 ### Primary Variables
 
-* p, z_0
+* p, z_H2O
 
 ### Computational Grid
 
-_Please provide the number and shape of grid elements._
+Unstructured grid: 48274 Wedges (0.003<lc<0.015), 2 Cylindrical well cells (radius=0.005m)
 
 ### Performance
 
-| Indicator                            |  Average |      Min |      Max |
-|:-------------------------------------|---------:|---------:|---------:|
-| time step size [s]                   | 1.23e+56 | 1.23e+56 | 1.23e+56 |
-| # nonlinear iterations per time step |      123 |      123 |      123 |
-| # linear iterations per solve        |      123 |      123 |      123 |
+| Indicator                            | Average |     Min |  Max |
+| :----------------------------------- | ------: | ------: | ---: |
+| time step size [s]                   |      14 | 8.64e-5 | 60.0 |
+| # nonlinear iterations per time step |    1.43 |       1 |    6 |
+| # linear iterations per solve        |       1 |       1 |    1 |
